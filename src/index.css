@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ✅ FIX: Default dark theme */
+body {
+  background-color: black;
+  color: white;
+ overflow-x: hidden;
+}
