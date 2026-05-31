@@ -7,8 +7,8 @@ const projects = [
       "A modern habit tracking web app with authentication, reminders and progress tracking.",
     image:
       "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1200&auto=format&fit=crop",
-    live: "#",
-    github: "#",
+    live: "https://bq-habit-tracker.vercel.app/",   // ✅ tumhara live link
+    github: "https://github.com/Farhan",             // ✅ tumhara GitHub
   },
 
   {
@@ -17,8 +17,8 @@ const projects = [
       "Responsive admin panel with analytics, charts and clean UI design.",
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
-    live: "#",
-    github: "#",
+    live: "#",       // 👈 apna live link yahan dalna
+    github: "https://github.com/Farhan",
   },
 
   {
@@ -27,8 +27,8 @@ const projects = [
       "Cinematic animated personal portfolio built using React and Tailwind CSS.",
     image:
       "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop",
-    live: "#",
-    github: "#",
+    live: "#",       // 👈 apna live link yahan dalna
+    github: "https://github.com/Farhan",
   },
 ];
 
@@ -110,8 +110,11 @@ export default function Projects() {
                 {/* Buttons */}
                 <div className="flex flex-wrap gap-2 sm:gap-3 lg:gap-4 mt-4 sm:mt-5 lg:mt-6">
 
+                  {/* ✅ Live Demo button */}
                   <motion.a
                     href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="px-4 py-2 text-xs sm:text-sm lg:text-base rounded-full bg-white text-black font-medium shadow-lg"
@@ -119,8 +122,11 @@ export default function Projects() {
                     Live Demo
                   </motion.a>
 
+                  {/* ✅ GitHub button */}
                   <motion.a
                     href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="px-4 py-2 text-xs sm:text-sm lg:text-base rounded-full border border-white/20 hover:bg-white/10 transition"

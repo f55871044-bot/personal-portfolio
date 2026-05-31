@@ -116,14 +116,16 @@ export default function About() {
 
           </div>
 
-          {/* Button */}
-          <motion.button
+          {/* ✅ CV Download Button */}
+          <motion.a
+            href="/Ayesha_Khan_CV.pdf"
+            download="Ayesha_Khan_CV.pdf"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="mt-8 sm:mt-10 px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-white text-black font-semibold shadow-2xl"
+            className="mt-8 sm:mt-10 inline-block px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-white text-black font-semibold shadow-2xl"
           >
             Download CV
-          </motion.button>
+          </motion.a>
 
         </motion.div>
       </div>

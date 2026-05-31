@@ -20,7 +20,7 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
             className="text-white font-bold text-lg sm:text-xl"
           >
-            Farhan<span className="text-cyan-400">.dev</span>
+            Ayesha<span className="text-cyan-400">.dev</span>
           </motion.h1>
 
           {/* Links */}

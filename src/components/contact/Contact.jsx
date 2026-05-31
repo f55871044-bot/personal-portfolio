@@ -1,6 +1,44 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState(""); // sending / sent / error
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    emailjs
+      .send(
+        "service_xr5rluf",   // ✅ tumhari Service ID
+        "template_pxoemnu",  // ✅ tumhari Template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        "bMAuB0DIVSYRJeIK2"  // ✅ tumhari Public Key
+      )
+      .then(() => {
+        setStatus("sent");
+        setFormData({ name: "", email: "", message: "" });
+      })
+      .catch(() => {
+        setStatus("error");
+      });
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
     <section
       id="contact"
@@ -21,7 +59,7 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-3xl sm:text-5xl lg:text-6xl font-black mb-4 sm:mb-6"
         >
-          Let’s Work Together
+          Let's Work Together
         </motion.h2>
 
         {/* Subtitle */}
@@ -37,6 +75,7 @@ export default function Contact() {
 
         {/* Form Card */}
         <motion.form
+          onSubmit={handleSubmit}
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7 }}
@@ -49,7 +88,11 @@ export default function Contact() {
           <motion.input
             whileFocus={{ scale: 1.01 }}
             type="text"
+            name="name"
             placeholder="Your Name"
+            value={formData.name}
+            onChange={handleChange}
+            required
             className="w-full mb-4 sm:mb-6 p-3 sm:p-4 rounded-xl bg-black/40 border border-white/10 text-white outline-none focus:border-cyan-400 transition"
           />
 
@@ -57,7 +100,11 @@ export default function Contact() {
           <motion.input
             whileFocus={{ scale: 1.01 }}
             type="email"
+            name="email"
             placeholder="Your Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
             className="w-full mb-4 sm:mb-6 p-3 sm:p-4 rounded-xl bg-black/40 border border-white/10 text-white outline-none focus:border-purple-400 transition"
           />
 
@@ -65,20 +112,38 @@ export default function Contact() {
           <motion.textarea
             whileFocus={{ scale: 1.01 }}
             rows="5"
+            name="message"
             placeholder="Your Message"
+            value={formData.message}
+            onChange={handleChange}
+            required
             className="w-full mb-6 sm:mb-8 p-3 sm:p-4 rounded-xl bg-black/40 border border-white/10 text-white outline-none focus:border-cyan-400 transition"
           />
 
+          {/* ✅ Success / Error Message */}
+          {status === "sent" && (
+            <p className="text-cyan-400 mb-4 font-medium">
+              ✅ Message bhej diya! Main jald reply karungi.
+            </p>
+          )}
+          {status === "error" && (
+            <p className="text-red-400 mb-4 font-medium">
+              ❌ Kuch error hua, dobara try karo.
+            </p>
+          )}
+
           {/* Button */}
           <motion.button
+            type="submit"
+            disabled={status === "sending"}
             whileHover={{
               scale: 1.05,
               boxShadow: "0px 0px 20px rgba(34,211,238,0.3)",
             }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 sm:px-10 py-3 sm:py-4 rounded-full bg-white text-black font-bold w-full sm:w-auto"
+            className="px-8 sm:px-10 py-3 sm:py-4 rounded-full bg-white text-black font-bold w-full sm:w-auto disabled:opacity-60"
           >
-            Send Message
+            {status === "sending" ? "Sending..." : "Send Message"}
           </motion.button>
 
         </motion.form>

@@ -72,21 +72,25 @@ export default function Hero() {
           className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center"
         >
 
-          <motion.button
+          {/* ✅ View Projects — projects section pe scroll */}
+          <motion.a
+            href="#projects"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-white text-black font-semibold shadow-2xl"
           >
             View Projects
-          </motion.button>
+          </motion.a>
 
-          <motion.button
+          {/* ✅ Contact Me — contact section pe scroll */}
+          <motion.a
+            href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-6 sm:px-8 py-3 sm:py-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-md hover:bg-white/10 transition"
           >
             Contact Me
-          </motion.button>
+          </motion.a>
 
         </motion.div>
 
@@ -98,21 +102,18 @@ export default function Hero() {
           className="flex items-center justify-center gap-4 sm:gap-6 mt-10 sm:mt-12 flex-wrap"
         >
 
+          {/* ✅ GitHub — tumhara sahi profile */}
           <motion.a
             whileHover={{ scale: 1.05 }}
-            href="#"
+            href="https://github.com/f55871044-bot"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-4 sm:px-5 py-2 sm:py-3 text-sm sm:text-base rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition"
           >
             GitHub
           </motion.a>
 
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            href="#"
-            className="px-4 sm:px-5 py-2 sm:py-3 text-sm sm:text-base rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition"
-          >
-            LinkedIn
-          </motion.a>
+          {/* ✅ LinkedIn removed */}
 
         </motion.div>
       </div>
